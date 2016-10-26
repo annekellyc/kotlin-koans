@@ -5,3 +5,11 @@ workspace.xml
 build
 local.properties
 .idea/
+.classpath
+.project
+gradlew
+*.bat
+gradle/
+*.iml
+*.ipr
+*.iws

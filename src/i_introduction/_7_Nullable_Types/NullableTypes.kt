@@ -1,31 +1,19 @@
 package i_introduction._7_Nullable_Types
 
-import util.TODO
-import util.doc7
+/*
+    Task 7.
+    Rewrite JavaCode7.sendMessageToClient in Kotlin, using only one 'if' expression.
+    Declarations of Client, PersonalInfo and Mailer are given below.
+ */
 
-fun test() {
-    val s: String = "this variable cannot store null references"
-    val q: String? = null
+fun sendMessageToClient(client: Client?, message: String?, mailer: Mailer) {
+    if (client == null || message == null) return
 
-    if (q != null) q.length      // you have to check to dereference
-    val i: Int? = q?.length      // null
-    val j: Int = q?.length ?: 0  // 0
-}
+    val personalInfo = client.personalInfo ?: return
 
-fun todoTask7(client: Client?, message: String?, mailer: Mailer): Nothing = TODO(
-    """
-        Task 7.
-        Rewrite JavaCode7.sendMessageToClient in Kotlin, using only one 'if' expression.
-        Declarations of Client, PersonalInfo and Mailer are given below.
-    """,
-    documentation = doc7(),
-    references = { JavaCode7().sendMessageToClient(client, message, mailer) }
-)
+    val email = personalInfo.email ?: return
 
-fun sendMessageToClient(
-        client: Client?, message: String?, mailer: Mailer
-) {
-    todoTask7(client, message, mailer)
+    mailer.sendMessage(email, message)
 }
 
 class Client (val personalInfo: PersonalInfo?)
